@@ -2,6 +2,8 @@
 
 package demo.weka.algorithms;
 
+import com.google.gson.Gson;
+
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
@@ -13,7 +15,8 @@ public class j48 {
 		  dataset.setClassIndex(dataset.numAttributes()-1);
 		  J48 tree = new J48();
 		  tree.buildClassifier(dataset);
-		  System.out.println(tree.toString());
-		  return (tree.toSource(className));
+		  //System.out.println(tree.toString());
+		  //return (tree.toSource(className));	  
+		  return tree.toString();
 	 }
 }
