@@ -63,21 +63,27 @@ public class j48 {
 	public static void clasify(ArrayList<Branch> tree,ArrayList<Instance> instances) {
 		Boolean end = false;
 		Integer depth = 0;
+		Integer lastDepth = 0;
 		String result = "";
-		for(int i=0;i<tree.size();i++) {
-			for(int j=0;j<instances.size();j++) {
+		for(int i=0;i<tree.size()&&!end;i++) {
+			for(int j=0;j<instances.size()&&!end;j++) {
 				Branch branch = tree.get(i);
 				Instance data = instances.get(j);
-				if(branch.getName().equals(data.getName())&&branch.getDepth()==depth){
-					if(branch.getOperation().equals("=")&&branch.getValue().equals(data.getValue())
-							|| branch.getOperation().equals("<=")&&Double.parseDouble(data.getValue())<=Double.parseDouble(branch.getValue())
-							|| branch.getOperation().equals(">")&&Double.parseDouble(data.getValue())>Double.parseDouble(branch.getValue())) {
-						depth++;
-						if(branch.getEnd()) {
-							result = branch.getResult();
-							break;
-						}
-					}		
+				if(branch.getDepth()>=lastDepth) {
+					if(branch.getName().equals(data.getName()) && branch.getDepth()==depth){
+						if(branch.getOperation().equals("=")&&branch.getValue().equals(data.getValue())
+								|| branch.getOperation().equals("<=")&&Double.parseDouble(data.getValue())<=Double.parseDouble(branch.getValue())
+								|| branch.getOperation().equals(">")&&Double.parseDouble(data.getValue())>Double.parseDouble(branch.getValue())) {
+							depth++;
+							lastDepth = branch.getDepth();
+							if(branch.getEnd()) {
+								result += branch.getResult();
+								end = true;
+							}
+						}	
+					}
+				}else {
+					break;
 				}
 			} 
 		}

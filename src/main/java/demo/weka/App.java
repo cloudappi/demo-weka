@@ -36,18 +36,28 @@ public class App {
 		
 		Instance i1 = new Instance();
 		i1.setName("HIJOS");
-		i1.setValue("YES");
+		i1.setValue("NO");
 		instances.add(i1);
 		
-		Instance i2 = new Instance();
-		i2.setName("INGRESOS");
-		i2.setValue("20000");
-		instances.add(i2);
-		
 		Instance i3 = new Instance();
-		i3.setName("COCHE");
+		i3.setName("HIPOTECA");
 		i3.setValue("YES");
 		instances.add(i3);
+		
+		Instance i5 = new Instance();
+		i5.setName("INGRESOS");
+		i5.setValue("20000");
+		instances.add(i5);
+		
+		Instance i4 = new Instance();
+		i4.setName("EDAD");
+		i4.setValue("50");
+		instances.add(i4);
+		
+		Instance i2 = new Instance();
+		i2.setName("CASADO");
+		i2.setValue("NO");
+		instances.add(i2);
 		
 		return instances;
 	}
